@@ -34,7 +34,6 @@ const App = () => {
     setCountries(c)
   }, [])
   
-  console.log(countries[0].population)
   const clickLeft = () => {
     if (countries[0].population > countries[1].population) {
       var c = newCountries();
@@ -60,16 +59,16 @@ const App = () => {
   return (
     <div style={{ height: "100vh", width: "100%", backgroundColor:"#252525" }}>
       <div style={{ display: "table", margin:"0 auto" }}><p style={{fontSize: "30px", color:"red"}}>Score: {score}</p></div>
-      <div style={{ height: "80vh", width: "48%", display:"flex", justifyContent:"center", alignItems:"center", float:"left", backgroundImage:`url(${countries[0].flags.png})`, backgroundRepeat:"no-repeat", backgroundSize: "100%", backgroundPositionY: "center",}} >
+      <div style={{ height: "80vh", width: "48%", display:"flex", justifyContent:"center", alignItems:"center", float:"left", backgroundImage:`url(${countries.length > 1 ? countries[0].flags.png : data[0].flags.png})`, backgroundRepeat:"no-repeat", backgroundSize: "100%", backgroundPositionY: "center",}} >
         <button style={{ fontSize:"50px", backgroundColor:"white", borderStyle:"solid", borderColor:"black", borderWidth:"5px", padding:"20px" }}
           onClick={clickLeft}>
-            { countries[0].name.common }
+            { countries.length > 1 ? countries[0].name.common : data[0].name.common }
         </button>
       </div>
-      <div style={{ height: "80vh", width: "48%", display:"flex", justifyContent:"center", alignItems:"center", float:"right", backgroundImage:`url(${countries[1].flags.png})`, backgroundRepeat:"no-repeat", backgroundSize: "100%", backgroundPositionY: "center",}} >
+      <div style={{ height: "80vh", width: "48%", display:"flex", justifyContent:"center", alignItems:"center", float:"right", backgroundImage:`url(${countries.length > 1 ? countries[1].flags.png : data[1].flags.png})`, backgroundRepeat:"no-repeat", backgroundSize: "100%", backgroundPositionY: "center",}} >
         <button style={{ fontSize:"50px", backgroundColor:"white", borderStyle:"solid", borderColor:"black", borderWidth:"5px", padding:"20px" }}
           onClick={clickRight}>
-            { countries[1].name.common }
+            { countries.length > 1 ? countries[1].name.common : data[1].name.common }
         </button> 
       </div>
     </div>
